@@ -5,7 +5,15 @@ threadsafe: true
 handlers:
   - url: /
     static_files: dist/index.html 
-    upload: dist/index.html
+    upload: dist/.*
+
+  - url: /login
+    static_files: dist/index.html 
+    upload: dist/.*
+
+  - url: /admin
+    static_files: dist/index.html 
+    upload: dist/.*
 
   - url: / 
     static_dir: dist
