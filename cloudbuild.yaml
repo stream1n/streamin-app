@@ -10,7 +10,7 @@ steps:
 
   # Deploy container image to Cloud Run
   - name: gcr.io/cloud-builders/gcloud
-    args: [ run, deploy, frontend, --image, gcr.io/streamin-263110/streamin-app, --namespace, public, --platform, gke, --cluster, cloud-run-gke-auth-tutorial, --cluster-location, us-central1-c]
+    args: [ run, deploy, frontend, --image, gcr.io/streamin-263110/streamin-app, --platform, managed]
 
 
 images:
