@@ -1,5 +1,7 @@
 import {Injectable} from '@angular/core';
 
+import * as firebaseui from 'firebaseui';
+import * as firebase from 'firebase/app';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
@@ -10,10 +12,42 @@ import {map, first} from 'rxjs/operators';
 })
 export class AuthService {
 
-  userData: any;
-  public userToken: string;
+  private ui: firebaseui.auth.AuthUI;
 
   constructor(private afAuth: AngularFireAuth, private router: Router) {
+  }
+
+  InitFirebaseLoginUI() {
+    const uiConfig = {
+      signInSuccessUrl: '/admin',
+      tosUrl: '/terms',
+      privacyPolicyUrl: '/privacy',
+      signInOptions: [
+        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+        firebase.auth.EmailAuthProvider.PROVIDER_ID
+      ],
+      callbacks: {
+
+        signInSuccessWithAuthResult: this
+          .onLoginSuccessful
+          .bind(this)
+      }
+
+    };
+
+    this.ui = new firebaseui.auth.AuthUI(this.afAuth.auth);
+
+    this.ui.start('#firebaseui-auth-container', uiConfig);
+  }
+
+  DestroyFirebaseLoginUI() {
+    this.ui.delete();
+  }
+
+  onLoginSuccessful(result, redirectUrl) {
+    console.log('test');
+    localStorage.setItem('user', JSON.stringify(result));
+    return true;
   }
 
   GetUserToken() {
@@ -21,7 +55,6 @@ export class AuthService {
       this.afAuth.auth.onAuthStateChanged( user => {
         if (user) {
           user.getIdToken().then(idToken => {
-            this.userToken = idToken;
             resolve(idToken);
           });
         }

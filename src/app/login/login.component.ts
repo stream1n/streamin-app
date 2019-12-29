@@ -1,8 +1,5 @@
-import { Component, NgZone, OnInit, OnDestroy } from '@angular/core';
-import * as firebaseui from 'firebaseui';
-import * as firebase from 'firebase/app';
-import {AngularFireAuth} from '@angular/fire/auth';
-import {Router} from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import {AuthService} from '../auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,44 +8,15 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit, OnDestroy {
 
-  ui: firebaseui.auth.AuthUI;
-
-  constructor(private afAuth: AngularFireAuth,
-              private router: Router,
-              private ngZone: NgZone) {
+  constructor(private auth: AuthService) {
   }
 
   ngOnInit() {
-
-    const uiConfig = {
-      signInSuccessUrl: '/admin',
-      tosUrl: '/terms',
-      privacyPolicyUrl: '/privacy',
-      signInOptions: [
-        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-        firebase.auth.EmailAuthProvider.PROVIDER_ID
-      ],
-      callbacks: {
-
-        signInSuccessWithAuthResult: this
-          .onLoginSuccessful
-          .bind(this)
-      }
-
-    };
-
-    this.ui = new firebaseui.auth.AuthUI(this.afAuth.auth);
-
-    this.ui.start('#firebaseui-auth-container', uiConfig);
+      this.auth.InitFirebaseLoginUI();
   }
 
   ngOnDestroy() {
-    this.ui.delete();
-  }
-
-  onLoginSuccessful(result, redirectUrl) {
-    localStorage.setItem('user', JSON.stringify(result));
-    return true;
+    this.auth.DestroyFirebaseLoginUI();
   }
 
 }
