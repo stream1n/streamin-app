@@ -1,11 +1,8 @@
-FROM node:13.5.0-alpine as node
-
-WORKDIR /usr/src/app
-
-COPY package*.json ./
-
-RUN npm install
-
+FROM node:latest as node
+WORKDIR /app
 COPY . .
-
+RUN npm install
 RUN npm run build --prod
+
+FROM nginx:alpine
+COPY --from=node /app/dist/streamin-app /usr/share/nginx/html
