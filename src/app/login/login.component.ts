@@ -47,6 +47,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   onLoginSuccessful(result, redirectUrl) {
+    localStorage.setItem('user', JSON.stringify(result));
     return true;
   }
 

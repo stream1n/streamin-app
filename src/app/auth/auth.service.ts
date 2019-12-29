@@ -3,7 +3,7 @@ import {Injectable} from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {map, first} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -14,16 +14,6 @@ export class AuthService {
   public userToken: string;
 
   constructor(private afAuth: AngularFireAuth, private router: Router) {
-    this.afAuth.authState.subscribe(user => {
-      if (user) {
-        this.userData = user;
-        localStorage.setItem('user', JSON.stringify(this.userData));
-        JSON.parse(localStorage.getItem('user'));
-      } else {
-        localStorage.setItem('user', null);
-        JSON.parse(localStorage.getItem('user'));
-      }
-    });
   }
 
   GetUserToken() {
@@ -53,6 +43,7 @@ export class AuthService {
   }
 
   logout() {
+    localStorage.setItem('user', null);
     this.afAuth.auth.signOut()
       .then((res) => this.router.navigate(['/login']));
   }
