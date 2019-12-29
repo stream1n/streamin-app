@@ -8,10 +8,6 @@
   {{displayName}}
 </ng-container>
 
-<ng-container *ngIf="(userToken$ | async) as userToken">
-  {{userToken}}
-</ng-container>
-
 <a (click)="logout()">
   <span>Logout</span>
 </a>

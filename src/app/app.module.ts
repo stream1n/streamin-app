@@ -6,6 +6,8 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 
+import { HttpClientModule } from '@angular/common/http';
+
 import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -26,6 +28,7 @@ import { PrivacyComponent } from './privacy/privacy.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AdminModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../auth/auth.service';
 import {Observable} from 'rxjs';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {log} from 'util';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -11,37 +13,26 @@ export class AdminDashboardComponent implements OnInit {
 
   photoUrl$: Observable<string>;
   displayName$: Observable<string>;
-  userToken$: Observable<string>;
 
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService, private http: HttpClient) { }
 
   ngOnInit() {
 
     this.photoUrl$ = this.auth.getUserPhotoURL();
     this.displayName$ = this.auth.getUserDisplayName();
     this.auth.GetUserToken().then((idToken) => {
-      console.log(idToken);
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          Authorization: 'Bearer ' + idToken
+        }),
+      };
+      this.http.get(`/api/secure.json`, httpOptions).subscribe((data) => console.log(data));
     });
 
   }
-/*
-public getEmployees(): Observable<Employee[]> {
-  return new Promise((resolve, reject) =>
-    this.authService.GetToken().then((idToken) => {
-      httpOptions = {
-        headers: new HttpHeaders({
-          'Content-Type': 'application/json',
-          'Authorization': 'JWT ' + idToken
-        }),
-      };
 
-      this.http.get<Employee[]>(`${this.url}/employee/`, this.httpOptions)
-          .then(resolve).catch(reject);
-
-    })
-  })
-}
- */
   logout() {
     this.auth.logout();
   }
