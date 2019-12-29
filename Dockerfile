@@ -3,4 +3,10 @@ WORKDIR /app
 COPY . .
 RUN npm install
 RUN npm run build --prod
-CMD [ "npm", "start" ]
+
+FROM nginx:alpine
+RUN mkdir /var/logs
+RUN mkdir /var/logs/nginx
+COPY --from=node /app/dist/streamin-app /usr/share/nginx/html
+EXPOSE 8080
+CMD ["nginx", "-g", "daemon off;"]
