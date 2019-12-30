@@ -12,11 +12,11 @@ const ourUri = '/graphql';
 export function provideApollo(httpLink: HttpLink) {
 
   console.log('provide Apollo');
-  const basic = setContext((operation, context) => ({
+  /*const basic = setContext((operation, context) => ({
     headers: {
       Accept: 'charset=utf-8'
     }
-  }));
+  }));*/
 
   const token = localStorage.getItem('token');
   console.log('token: ' + token);
