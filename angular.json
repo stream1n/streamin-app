@@ -64,6 +64,7 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "port": 8080,
+            "host": "0.0.0.0",
             "browserTarget": "streamin-app:build"
           },
           "configurations": {
