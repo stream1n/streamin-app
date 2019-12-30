@@ -26,7 +26,11 @@ export function provideApollo(httpLink: HttpLink) {
     },
   }));
 
-  const link = ApolloLink.from([basic, auth, httpLink.create({ uri })]);
+  const getmethod = setContext((operation, context) => ({
+    useGETForQueries: true,
+  }));
+
+  const link = ApolloLink.from([basic, auth, getmethod, httpLink.create({ uri })]);
   const cache = new InMemoryCache();
 
   return {
