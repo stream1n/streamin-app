@@ -18,7 +18,6 @@ export class ResultListRefreshComponent implements OnInit {
 
   private refreshResults() {
     this.auth.GetUserToken().then((idToken: string) => {
-      localStorage.setItem('token', idToken);
       this.recresultsService.getresults();
     });
 

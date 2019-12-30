@@ -45,7 +45,6 @@ export class AuthService {
   }
 
   onLoginSuccessful(result, redirectUrl) {
-    console.log('test');
     localStorage.setItem('user', JSON.stringify(result));
     return true;
   }
@@ -55,6 +54,8 @@ export class AuthService {
       this.afAuth.auth.onAuthStateChanged( user => {
         if (user) {
           user.getIdToken().then(idToken => {
+            console.log('setting token');
+            localStorage.setItem('token', idToken);
             resolve(idToken);
           });
         }

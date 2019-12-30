@@ -11,6 +11,7 @@ const uri = '/graphql';
 
 export function provideApollo(httpLink: HttpLink) {
 
+  console.log('provide Apollo');
   const basic = setContext((operation, context) => ({
     headers: {
       Accept: 'charset=utf-8'
@@ -18,7 +19,7 @@ export function provideApollo(httpLink: HttpLink) {
   }));
 
   const token = localStorage.getItem('token');
-  console.log(token);
+  console.log('token: ' + token);
   const auth = setContext((operation, context) => ({
     headers: {
       Authorization: `Bearer ${token}`
