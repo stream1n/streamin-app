@@ -17,6 +17,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AdminModule } from './admin/admin.module';
 import { TermsComponent } from './terms/terms.component';
 import { PrivacyComponent } from './privacy/privacy.component';
+import {GraphQLModule} from './graphql/apollo.module';
+import {DataalertService} from './services/dataalert.service';
+import {RecresultsService} from './services/recresults.service';
 
 @NgModule({
   declarations: [
@@ -35,8 +38,12 @@ import { PrivacyComponent } from './privacy/privacy.component';
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
+    GraphQLModule
   ],
-  providers: [],
+  providers: [
+    DataalertService,
+    RecresultsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -28,7 +28,7 @@ export class AdminDashboardComponent implements OnInit {
           Authorization: 'Bearer ' + idToken
         }),
       };
-      this.http.get(`/api/secureendpoint`, httpOptions).subscribe((data) => console.log(data));
+      this.http.get(`api/secureendpoint`, httpOptions).subscribe((data) => console.log(data));
     });
 
   }
