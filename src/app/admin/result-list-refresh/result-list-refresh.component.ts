@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {RecresultsService} from '../../services/recresults.service';
+import {AuthService} from '../../auth/auth.service';
+import {HttpHeaders} from '@angular/common/http';
 
 @Component({
   selector: 'app-result-list-refresh',
@@ -8,14 +10,18 @@ import {RecresultsService} from '../../services/recresults.service';
 })
 export class ResultListRefreshComponent implements OnInit {
 
-  constructor(private recresultsService: RecresultsService) {
+  constructor(private auth: AuthService, private recresultsService: RecresultsService) {
   }
 
   ngOnInit() {
   }
 
   private refreshResults() {
-    this.recresultsService.getresults();
+    this.auth.GetUserToken().then((idToken: string) => {
+      localStorage.setItem('token', idToken);
+      this.recresultsService.getresults();
+    });
+
   }
 
 }
