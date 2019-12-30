@@ -6,7 +6,8 @@ RUN npm run build --prod
 
 ENV PORT=8080
 
-FROM nginx:latest
+FROM nginx:alpine
 COPY --from=node /app/dist/streamin-app/ /usr/share/nginx/html/
+COPY nginx.conf /etc/nginx/
 EXPOSE 8080
 CMD ["nginx", "-g", "daemon off;"]
