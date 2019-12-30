@@ -1,13 +1,13 @@
 import {NgModule} from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { ApolloModule, Apollo, APOLLO_OPTIONS } from 'apollo-angular';
-import { HttpLinkModule, HttpLink } from 'apollo-angular-link-http';
+import { HttpLinkModule, HttpLink} from 'apollo-angular-link-http';
+import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ApolloLink } from 'apollo-link';
 import { setContext } from 'apollo-link-context';
-import { environment } from '../../environments/environment';
 
-const uri = '/graphql';
+const ourUri = '/graphql';
 
 export function provideApollo(httpLink: HttpLink) {
 
@@ -26,11 +26,10 @@ export function provideApollo(httpLink: HttpLink) {
     },
   }));
 
-  const getmethod = setContext((operation, context) => ({
-    useGETForQueries: true,
-  }));
+  const ourHttpLink = createHttpLink({ uri: ourUri, useGETForQueries: true });
 
-  const link = ApolloLink.from([basic, auth, getmethod, httpLink.create({ uri })]);
+  const link = ApolloLink.from([basic, auth, ourHttpLink]);
+
   const cache = new InMemoryCache();
 
   return {

@@ -25,6 +25,7 @@
     "apollo-cache-inmemory": "^1.6.5",
     "apollo-client": "^2.6.8",
     "apollo-link-context": "^1.0.19",
+    "apollo-link-http": "^1.5.16",
     "firebase": "^7.6.1",
     "firebaseui": "^4.4.0",
     "graphql": "^14.5.8",
