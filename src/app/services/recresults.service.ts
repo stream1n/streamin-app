@@ -15,6 +15,7 @@ export class RecresultsService {
       query: ALL_RESULTS_QUERY,
       fetchPolicy: 'network-only'
     }).subscribe((response: any) => {
+      console.log(response);
       this.dataalertservice.results(response.data.results);
     });
   }
