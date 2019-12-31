@@ -54,7 +54,6 @@ export class AuthService {
       this.afAuth.auth.onAuthStateChanged( user => {
         if (user) {
           user.getIdToken().then(idToken => {
-            console.log('setting token');
             localStorage.setItem('token', idToken);
             resolve(idToken);
           });
