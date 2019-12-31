@@ -16,6 +16,7 @@ export class RecresultsService {
       fetchPolicy: 'network-only'
     }).subscribe((response) => {
       console.log(response.errors);
+      console.log(response);
       //this.dataalertservice.results(response.data.results);
     });
   }
