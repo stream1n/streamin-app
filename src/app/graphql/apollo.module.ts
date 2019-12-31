@@ -52,7 +52,7 @@ export function provideApollo(httpLink: HttpLink, authservice: AuthService) {
   providers: [{
     provide: APOLLO_OPTIONS,
     useFactory: provideApollo,
-    deps: [HttpLink]
+    deps: [HttpLink, AuthService]
   }]
 })
 
