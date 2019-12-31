@@ -12,11 +12,11 @@ const ourUri = '/graphql';
 export function provideApollo(httpLink: HttpLink) {
 
   console.log('provide Apollo');
-  /*const basic = setContext((operation, context) => ({
+  const basic = setContext((operation, context) => ({
     headers: {
-      Accept: 'charset=utf-8'
+      'Content-Type': undefined
     }
-  }));*/
+  }));
 
   const token = localStorage.getItem('token');
   console.log('token: ' + token);
@@ -28,9 +28,9 @@ export function provideApollo(httpLink: HttpLink) {
 
   const ourHttpLink = createHttpLink({ uri: ourUri, useGETForQueries: true });
 
-  //const link = ApolloLink.from([basic, auth, ourHttpLink]);
+  const link = ApolloLink.from([basic, auth, ourHttpLink]);
 
-  const link = ApolloLink.from([auth, ourHttpLink]);
+  //const link = ApolloLink.from([auth, ourHttpLink]);
 
   const cache = new InMemoryCache();
 
