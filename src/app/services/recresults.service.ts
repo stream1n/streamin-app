@@ -14,8 +14,8 @@ export class RecresultsService {
     this.apollo.query({
       query: ALL_RESULTS_QUERY,
       fetchPolicy: 'network-only'
-    }).subscribe((response: any) => {
-      console.log(response);
+    }).subscribe((response) => {
+      console.log(response.errors);
       //this.dataalertservice.results(response.data.results);
     });
   }
