@@ -20,13 +20,9 @@ export function provideApollo(httpLink: HttpLink, authservice: AuthService) {
 
   const auth = setContext(async (_, { headers }) => {
 
-    let token = this.auth.getCachedAccessToken();
+    await authservice.GetUserToken();
 
-    if (!token) {
-      await authservice.GetUserToken();
-
-      token = localStorage.getItem('token');
-    }
+    const token = localStorage.getItem('token');
 
     return {
       headers: {
