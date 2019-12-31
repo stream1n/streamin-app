@@ -23,7 +23,7 @@ export function provideApollo(httpLink: HttpLink, authservice: AuthService) {
     await authservice.GetUserToken();
 
     const token = localStorage.getItem('token');
-
+    console.log(token);
     return {
       headers: {
         Authorization: `Bearer ${token}`
