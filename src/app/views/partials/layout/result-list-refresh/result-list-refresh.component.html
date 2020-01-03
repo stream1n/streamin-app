@@ -1,0 +1,15 @@
+<div #myDrop="ngbDropdown" ngbDropdown [autoClose]="true" [placement]="'bottom-right'" class="dropdown dropdown-inline">
+	<button ngbDropdownToggle type="button" class="btn btn-clean btn-sm btn-icon btn-icon-md">
+		<i class="flaticon-more-v2"></i>
+	</button>
+	<div ngbDropdownMenu class="dropdown-menu">
+		<ul class="kt-nav">
+			<li class="kt-nav__item">
+				<a class="kt-nav__link" (click)="refreshResults();myDrop.close()">
+					<i class="kt-nav__link-icon flaticon2-line-chart"></i>
+					<span class="kt-nav__link-text">Refresh</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>

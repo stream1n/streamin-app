@@ -36,11 +36,11 @@ query MatchedResults {
 `;
 
 export interface AllResultQueryResponse {
-  results: Result[];
-  loading: boolean;
+	results: Result[];
+	loading: boolean;
 }
 
 export interface MatchedResultQueryResponse {
-  matchedResults: Result[];
-  loading: boolean;
+	matchedResults: Result[];
+	loading: boolean;
 }
