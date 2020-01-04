@@ -181,36 +181,6 @@ export class PageConfig {
 		forms: {
 			page: {title: 'Forms', desc: ''}
 		},
-		mail: {
-			page: {title: 'Mail', desc: 'Mail'}
-		},
-		ecommerce: {
-			customers: {
-				page: {title: 'Customers', desc: ''}
-			},
-			products: {
-				edit: {
-					page: {title: 'Edit product', desc: ''}
-				},
-				add: {
-					page: {title: 'Create product', desc: ''}
-				}
-			},
-			orders: {
-				page: {title: 'Orders', desc: ''}
-			}
-		},
-		'user-management': {
-			users: {
-				page: {title: 'Users', desc: ''}
-			},
-			roles: {
-				page: {title: 'Roles', desc: ''}
-			}
-		},
-		builder: {
-			page: {title: 'Layout Builder', desc: ''}
-		},
 		header: {
 			actions: {
 				page: {title: 'Actions', desc: 'Actions example page'}

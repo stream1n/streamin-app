@@ -59,8 +59,6 @@ import {
 	Subheader4Component,
 	Subheader5Component,
 	SubheaderSearchComponent,
-	UserProfile2Component,
-	UserProfile3Component,
 	UserProfileComponent,
 } from './layout';
 // General
@@ -106,8 +104,6 @@ import { ResultListComponent } from './layout/result-list/result-list.component'
 		SearchDefaultComponent,
 		SearchDropdownComponent,
 		UserProfileComponent,
-		UserProfile2Component,
-		UserProfile3Component,
 		CartComponent,
 
 		ErrorComponent,
@@ -148,8 +144,6 @@ import { ResultListComponent } from './layout/result-list/result-list.component'
 		SearchDefaultComponent,
 		SearchDropdownComponent,
 		UserProfileComponent,
-		UserProfile2Component,
-		UserProfile3Component,
 		CartComponent,
 
 		ErrorComponent,

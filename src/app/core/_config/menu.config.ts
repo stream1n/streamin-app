@@ -274,45 +274,6 @@ export class MenuConfig {
 					]
 				},
 				{
-					title: 'Applications',
-					root: true,
-					alignment: 'left',
-					toggle: 'click',
-					submenu: [
-						{
-							title: 'eCommerce',
-							bullet: 'dot',
-							icon: 'flaticon-business',
-							permission: 'accessToECommerceModule',
-							submenu: [
-								{
-									title: 'Customers',
-									page: '/ecommerce/customers'
-								},
-								{
-									title: 'Products',
-									page: '/ecommerce/products'
-								},
-							]
-						},
-						{
-							title: 'User Management',
-							bullet: 'dot',
-							icon: 'flaticon-user',
-							submenu: [
-								{
-									title: 'Users',
-									page: '/user-management/users'
-								},
-								{
-									title: 'Roles',
-									page: '/user-management/roles'
-								}
-							]
-						},
-					]
-				},
-				{
 					title: 'Custom',
 					root: true,
 					alignment: 'left',
@@ -386,12 +347,6 @@ export class MenuConfig {
 					page: '/dashboard',
 					translate: 'MENU.DASHBOARD',
 					bullet: 'dot',
-				},
-				{
-					title: 'Layout Builder',
-					root: true,
-					icon: 'flaticon2-expand',
-					page: '/builder'
 				},
 				{section: 'Components'},
 				{
@@ -648,40 +603,6 @@ export class MenuConfig {
 						{
 							title: 'Typehead',
 							page: '/ngbootstrap/typehead'
-						}
-					]
-				},
-				{section: 'Applications'},
-				{
-					title: 'eCommerce',
-					bullet: 'dot',
-					icon: 'flaticon2-list-2',
-					root: true,
-					permission: 'accessToECommerceModule',
-					submenu: [
-						{
-							title: 'Customers',
-							page: '/ecommerce/customers'
-						},
-						{
-							title: 'Products',
-							page: '/ecommerce/products'
-						},
-					]
-				},
-				{
-					title: 'User Management',
-					root: true,
-					bullet: 'dot',
-					icon: 'flaticon2-user-outline-symbol',
-					submenu: [
-						{
-							title: 'Users',
-							page: '/user-management/users'
-						},
-						{
-							title: 'Roles',
-							page: '/user-management/roles'
 						}
 					]
 				},

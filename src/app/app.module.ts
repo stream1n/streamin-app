@@ -47,9 +47,6 @@ import {
 	SplashScreenService,
 	SubheaderService
 } from './core/_base/layout';
-// Auth
-import { AuthModule } from './views/pages/auth/auth.module';
-import { AuthService } from './core/auth';
 // CRUD
 import { HttpUtilsService, LayoutUtilsService, TypesUtilsService } from './core/_base/crud';
 // Config
@@ -68,7 +65,6 @@ import { PrivacyComponent } from './public/privacy/privacy.component';
 import { AboutComponent } from './public/about/about.component';
 import { TeamComponent } from './public/team/team.component';
 import { ContactComponent } from './public/contact/contact.component';
-import { PageNotFoundComponent } from './public/page-not-found/page-not-found.component';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
@@ -111,8 +107,7 @@ export function hljsLanguages(): HighlightLanguage[] {
 		PrivacyComponent,
 		AboutComponent,
 		TeamComponent,
-		ContactComponent,
-		PageNotFoundComponent
+		ContactComponent
 	],
 	imports: [
 		BrowserAnimationsModule,
@@ -131,7 +126,6 @@ export function hljsLanguages(): HighlightLanguage[] {
 		EffectsModule.forRoot([]),
 		StoreRouterConnectingModule.forRoot({stateKey: 'router'}),
 		StoreDevtoolsModule.instrument(),
-		AuthModule.forRoot(),
 		TranslateModule.forRoot(),
 		MatProgressSpinnerModule,
 		InlineSVGModule.forRoot(),
@@ -144,7 +138,6 @@ export function hljsLanguages(): HighlightLanguage[] {
 	],
 	exports: [],
 	providers: [
-		AuthService,
 		LayoutConfigService,
 		LayoutRefService,
 		MenuConfigService,

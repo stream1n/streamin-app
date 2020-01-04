@@ -19,7 +19,7 @@ export class LayoutConfig {
 		// == Page Splash Screen loading
 		loader: {
 			enabled: true,
-			type: 'spinner-logo',
+			type: 'default',
 			logo: './assets/media/logos/logo-mini-md.png',
 			message: 'Please wait...',
 		},
